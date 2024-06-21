@@ -7,6 +7,7 @@ import SignInPage from './auth/sign-in/index.jsx'
 import Home from './home/index.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import Dashboard from './dashboard/index.jsx'
+import EditResume from './dashboard/resume/[resumeId]/edit/index.jsx'
 
 
 
@@ -22,7 +23,12 @@ const router = createBrowserRouter([
       {
         path:'/dashboard',
         element:<Dashboard/>
+      },{
+        // We wrote "/resume/:resumeId/edit" as we are now accessing dynamic resumeId, So id for different resume will be different and to do so we need to handle dynamic url
+        path:'/dashboard/resume/:resumeId/edit',
+        element:<EditResume/>
       }
+
 
     ]
 

@@ -10,17 +10,17 @@ import GlobalApi from '../../../../../service/GlobalApi';
 import { toast } from "sonner"
 
 
-function PersonalDetail({enabledNext}) {
+function PersonalDetail({ enabledNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoX)
 
 
 
-    const params=useParams();
+    const params = useParams();
 
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(params)
-    },[])
+    }, [])
 
     /* On input Change the name and the value will be targeted (as we are taking it from the user) and resumeInfo will be get updated with the latest user info keeping the previous info same using 
     " 
@@ -36,26 +36,26 @@ function PersonalDetail({enabledNext}) {
 
  
     "
-   */ 
+   */
 
-    const [formData,setFormData] =useState();
-    const [loading,setLoading] =useState(false);
-    
+    const [formData, setFormData] = useState();
+    const [loading, setLoading] = useState(false);
+
 
 
     const handleInputChange = (e) => {
         enabledNext(false)
-        const {name,value}=e.target;
+        const { name, value } = e.target;
         // Only the field available in the form field will be saved to the database
         setFormData({
             ...formData,
-            [name]:value
+            [name]: value
         })
-        
-       
+
+
         setResumeInfo({
             ...resumeInfo,
-            [name]:value
+            [name]: value
         })
     }
 
@@ -65,23 +65,23 @@ function PersonalDetail({enabledNext}) {
         setLoading(true);
 
         // data saved to database
-        const data={
-            data:formData
+        const data = {
+            data: formData
         }
 
         // To send data to database
-        GlobalApi.UpdateResumeDetail(params?.resumeId,data).then(resp=>{
-                console.log(resp);
-                enabledNext(true);
-                setLoading(false);
-                toast("Details updated !")
+        GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(resp => {
+            console.log(resp);
+            enabledNext(true);
+            setLoading(false);
+            toast("Details updated !")
 
-                
-        },(error)=>{
+
+        }, (error) => {
             setLoading(false);
         }
         )
-        
+
     };
     return (
         <div className='p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10'>
@@ -94,8 +94,8 @@ function PersonalDetail({enabledNext}) {
                     <div>
                         <label className='text-sm'>First Name</label>
                         <Input name='firstName'
-                        defaultValue=
-                        {resumeInfo?.firstName} required onChange={handleInputChange} />
+                            defaultValue=
+                            {resumeInfo?.firstName} required onChange={handleInputChange} />
                     </div>
 
 
@@ -103,21 +103,21 @@ function PersonalDetail({enabledNext}) {
                     <div>
                         <label className='text-sm'>Last Name</label>
                         <Input name='lastName' defaultValue=
-                        {resumeInfo?.lastName} required onChange={handleInputChange} />
+                            {resumeInfo?.lastName} required onChange={handleInputChange} />
                     </div>
 
                     {/* Phone Number */}
                     <div>
                         <label className='text-sm'>Phone</label>
                         <Input name='phone' defaultValue=
-                        {resumeInfo?.phone} required onChange={handleInputChange} />
+                            {resumeInfo?.phone} required onChange={handleInputChange} />
                     </div>
 
                     {/* Email */}
                     <div>
                         <label className='text-sm'>Email</label>
                         <Input name='email' defaultValue=
-                        {resumeInfo?.email} required onChange={handleInputChange} />
+                            {resumeInfo?.email} required onChange={handleInputChange} />
                     </div>
 
 
@@ -125,14 +125,14 @@ function PersonalDetail({enabledNext}) {
                     <div className='col-span-2'>
                         <label className='text-sm'>Job Title</label>
                         <Input name='jobTitle' defaultValue=
-                        {resumeInfo?.jobTitle} required onChange={handleInputChange} />
+                            {resumeInfo?.jobTitle} required onChange={handleInputChange} />
                     </div>
 
                     {/* Address */}
                     <div className='col-span-2'>
                         <label className='text-sm'>Address</label>
                         <Input name='address' defaultValue=
-                        {resumeInfo?.address} required onChange={handleInputChange} />
+                            {resumeInfo?.address} required onChange={handleInputChange} />
                     </div>
 
 
@@ -141,9 +141,9 @@ function PersonalDetail({enabledNext}) {
 
                 <div className='mt-10 flex justify-end'>
                     <Button type='submit'
-                    disabled={loading}>
-                        {loading?<LoaderCircle className='animate-spin'/>:'Save'}
-                        </Button>
+                        disabled={loading}>
+                        {loading ? <LoaderCircle className='animate-spin' /> : 'Save'}
+                    </Button>
                 </div>
             </form>
 

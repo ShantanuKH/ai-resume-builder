@@ -33,7 +33,10 @@ function ProffesionalExperienceP({ resumeInfo }) {
             {experience?.state}
             <span>{experience?.startDate} - {experience?.currentlyWorking ? 'Present' : experience.endDate}</span>
           </h2>
-          <p className='text-xs my-2'>{experience?.workSummary}</p>
+          {/* <p className='text-xs my-2'>{experience?.workSummary}</p> */}
+
+          {/* To show rich text on the page*/}
+          <div className='text-xs my-2' dangerouslySetInnerHTML={{__html:experience.workSummery}}/>
         </div>
       ))}
     </div>

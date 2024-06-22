@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import PersonalDetail from './Froms/PersonalDetail'
 import { ArrowLeft, ArrowRight, LayoutGridIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Summary from './Froms/Summary';
 
 function FormSection() {
 
   // For the clicked next button we have to maintain the index
   // Initially the activeformindex will be 1
-  const [activeFormIndex, setActiveFormIndex] = useState(1);
+  const [activeFormIndex, setActiveFormIndex] = useState(2);
 
   const [enableNext,setEnableNext] = useState(false)
 
@@ -31,8 +32,8 @@ function FormSection() {
         </div>
       </div>
       {/* When active index 1 then user will be on personal detail page and if on index 2 then on summary and so on */}
-      {activeFormIndex==1?<PersonalDetail enabledNext={(v)=>setEnableNext(v)}/>:null}
-      {/* Summary
+      {activeFormIndex==1?<PersonalDetail enabledNext={(v)=>setEnableNext(v)}/>:activeFormIndex==2?<Summary enabledNext={(v)=>setEnableNext(v)}/>:null}
+      {/* 
       experience
       educatinla detail
       skills  */}

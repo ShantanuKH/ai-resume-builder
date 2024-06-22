@@ -5,7 +5,7 @@ import { LoaderCircle } from 'lucide-react'
 
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import GlobalApi from './../../../../../service/GlobalApi';
+import GlobalApi from '../../../../../service/GlobalApi';
 
 import { toast } from "sonner"
 

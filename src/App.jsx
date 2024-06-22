@@ -5,6 +5,8 @@ import './App.css'
 import {Navigate, Outlet} from 'react-router-dom'
 import {useUser} from '@clerk/clerk-react'
 import Header from './components/ui/custom/Header'
+import { Toaster } from './components/ui/sonner'
+
 // import Header from './components/custom/Header'
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     <>
       <Header/>
       <Outlet/>
+      <Toaster />
     </>
   )
 }
